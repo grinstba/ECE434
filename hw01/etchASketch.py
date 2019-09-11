@@ -1,23 +1,27 @@
 #!/usr/bin/env python3
 import random
 
+# Get board dimensions
 width = int(input('Enter board width: '))
 height = int(input('Enter board height: '))
 
+# Create the grid
 grid = [[' ' for i in range(width)] for j in range(height)]
 
-    
+# Generate a random starting location
 xPos = random.randint(0, width - 1)
 yPos = random.randint(0, height - 1)
 
-
+# Main loop to use the etch-a-sketch
 while (True):
+    # Print the top line
     print('  ', end='')
     for z in range(len(grid[0])):
         print(' ' + str(z), end='')
     
     print('')
     
+    # Print each grid row
     for k in range(len(grid)):
         print(str(k) + ':', end='')
         for i in range(len(grid[k])):
@@ -25,6 +29,7 @@ while (True):
     
         print('')
         
+    # Ask for a user command
     command = input('Enter command (up, down, left, rigth, clear): ')
     
     if (command == 'down'):
