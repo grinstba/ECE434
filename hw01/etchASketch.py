@@ -4,7 +4,7 @@ import random
 width = int(input('Enter board width: '))
 height = int(input('Enter board height: '))
 
-grid = [[' ' for i in range(height)] for j in range(width)]
+grid = [[' ' for i in range(width)] for j in range(height)]
 
     
 xPos = random.randint(0, width - 1)
@@ -40,7 +40,7 @@ while (True):
     elif (command == 'right'):
         yPos+= 1
         if (yPos >= height):
-            yPos = heigth - 1
+            yPos = height - 1
         grid[xPos][yPos] = 'X'
     elif (command == 'left'):
         yPos-= 1
