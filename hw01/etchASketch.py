@@ -12,9 +12,6 @@ grid = [[' ' for i in range(width)] for j in range(height)]
 xPos = random.randint(0, width - 1)
 yPos = random.randint(0, height - 1)
 
-print(xPos)
-print(yPos)
-
 # Main loop to use the etch-a-sketch
 while (True):
     # Print the top line
