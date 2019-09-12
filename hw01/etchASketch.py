@@ -12,6 +12,9 @@ grid = [[' ' for i in range(width)] for j in range(height)]
 xPos = random.randint(0, width - 1)
 yPos = random.randint(0, height - 1)
 
+print(xPos)
+print(yPos)
+
 # Main loop to use the etch-a-sketch
 while (True):
     # Print the top line
@@ -30,28 +33,28 @@ while (True):
         print('')
         
     # Ask for a user command
-    command = input('Enter command (up, down, left, rigth, clear): ')
+    command = input('Enter command (up, down, left, right, clear): ')
     
-    if (command == 'down'):
+    if (command == 'right'):
         xPos+= 1
         if (xPos >= width):
             xPos = width - 1
-        grid[xPos][yPos] = 'X'
-    elif (command == 'up'):
+        grid[yPos][xPos] = 'X'
+    elif (command == 'left'):
         xPos-= 1
         if (xPos <= 0):
             xPos = 0
-        grid[xPos][yPos] = 'X'
-    elif (command == 'right'):
+        grid[yPos][xPos] = 'X'
+    elif (command == 'down'):
         yPos+= 1
         if (yPos >= height):
             yPos = height - 1
-        grid[xPos][yPos] = 'X'
-    elif (command == 'left'):
+        grid[yPos][xPos] = 'X'
+    elif (command == 'up'):
         yPos-= 1
         if (yPos <= 0):
             yPos = 0
-        grid[xPos][yPos] = 'X'
+        grid[yPos][xPos] = 'X'
     elif (command == 'clear'):
         for k in range(len(grid)):
             for i in range(len(grid[k])):
