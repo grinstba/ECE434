@@ -8,6 +8,7 @@ def main(stdscr):
     xPos = random.randint(0, width - 1)
     yPos = random.randint(0, height - 1)
 
+    # Main etch-a-sketch loop
     while True:
         showScreen(stdscr, width, height)
         pressedKey = stdscr.getch()
