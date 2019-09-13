@@ -10,3 +10,9 @@ explains each command:
 - right: moves the cursor right and fills in the spot with an X  
 - left: moves the cursor left and fills the spot with an X  
 - clear: clears the whole board  
+
+## Prof. Yoder's comments
+
+Everything looks good.  Etch-a-sketch works, but a bit awkward having to type the whole name.
+
+Grade:  10/10
