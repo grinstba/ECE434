@@ -3,18 +3,21 @@ import random
 import curses
 import Adafruit_BBIO.GPIO as GPIO
 
+# Define button pins
 Button1 = 'P9_11'
 Button2 = 'P9_16'
 Button3 = 'P9_17'
 Button4 = 'P9_13'
 Button5 = 'P9_30'
 
+# Setup button pins to be input
 GPIO.setup(Button1, GPIO.IN)
 GPIO.setup(Button2, GPIO.IN)
 GPIO.setup(Button3, GPIO.IN)
 GPIO.setup(Button4, GPIO.IN)
 GPIO.setup(Button5, GPIO.IN)
 
+# Move cursor up and print X
 def cursorUp(channel):
     global xPos, yPos, update
     yPos-= 1
@@ -23,6 +26,7 @@ def cursorUp(channel):
     grid[yPos][xPos] = 'X'
     update = True
     
+#  Move curso down and print X
 def cursorDown(channel):
     global xPos, yPos, update
     yPos+= 1
@@ -31,6 +35,7 @@ def cursorDown(channel):
     grid[yPos][xPos] = 'X'
     update = True
     
+# Move cursor right and print X
 def cursorRight(channel):
     global xPos, yPos, update
     xPos+= 1
@@ -39,6 +44,7 @@ def cursorRight(channel):
     grid[yPos][xPos] = 'X'
     update = True
     
+# Move cursor left and print X
 def cursorLeft(channel):
     global xPos, yPos, update
     xPos-= 1
@@ -47,6 +53,7 @@ def cursorLeft(channel):
     grid[yPos][xPos] = 'X'
     update = True
     
+# Clear the whole board
 def clearGrid(channel):
     global update
     for k in range(len(grid)):
@@ -57,6 +64,7 @@ def clearGrid(channel):
 
 def main(stdscr):
     
+    # Setup buttons to trigger a function
     GPIO.add_event_detect(Button1, GPIO.RISING, callback=cursorLeft)
     GPIO.add_event_detect(Button2, GPIO.RISING, callback=cursorDown)
     GPIO.add_event_detect(Button3, GPIO.RISING, callback=cursorRight)
