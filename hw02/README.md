@@ -5,4 +5,5 @@ This file runs a program that uses four buttons to light up four LEDs when the b
   
 ### etchASketch.py  
 This file runs an etch-a-sketch type program in the console. The program will ask the user to specify the heigth and width of the board.
-After that the board will be displayed. An X will note where the board has been filled.
+After that the board will be displayed. An X will note where the board has been filled. Use the buttons on the board to move the cursor around
+and fill the board with X's. The buttons are in a wasd setup for up, down, left, and right. The button off to the side will clear the board.  
