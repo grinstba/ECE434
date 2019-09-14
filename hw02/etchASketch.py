@@ -2,11 +2,40 @@
 import random
 import curses
 
-def main(stdscr):
+def cursorUp():
+    global xPos, yPos
+    yPos-= 1
+    if (yPos <= 0):
+        yPos = 0
+    grid[yPos][xPos] = 'X'
     
-    # Generate a random starting location
-    xPos = random.randint(0, width - 1)
-    yPos = random.randint(0, height - 1)
+def cursorDown():
+    global xPos, yPos
+    yPos+= 1
+    if (yPos >= height):
+        yPos = height - 1
+    grid[yPos][xPos] = 'X'
+    
+def cursorRight():
+    global xPos, yPos
+    xPos+= 1
+    if (xPos >= width):
+        xPos = width - 1
+    grid[yPos][xPos] = 'X'
+    
+def cursorLeft():
+    global xPos, yPos
+    xPos-= 1
+    if (xPos <= 0):
+        xPos = 0
+    grid[yPos][xPos] = 'X'
+    
+def clearGrid():
+    for k in range(len(grid)):
+        for i in range(len(grid[k])):
+            grid[k][i] = ' '
+
+def main(stdscr):
 
     # Main etch-a-sketch loop
     while True:
@@ -14,29 +43,15 @@ def main(stdscr):
         pressedKey = stdscr.getch()
         
         if pressedKey == curses.KEY_UP:
-            yPos-= 1
-            if (yPos <= 0):
-                yPos = 0
-            grid[yPos][xPos] = 'X'
+            cursorUp()
         elif pressedKey == curses.KEY_DOWN:
-            yPos+= 1
-            if (yPos >= height):
-                yPos = height - 1
-            grid[yPos][xPos] = 'X'
+           cursorDown()
         elif pressedKey == curses.KEY_RIGHT:
-            xPos+= 1
-            if (xPos >= width):
-                xPos = width - 1
-            grid[yPos][xPos] = 'X'
+            cursorRight()
         elif pressedKey == curses.KEY_LEFT:
-            xPos-= 1
-            if (xPos <= 0):
-                xPos = 0
-            grid[yPos][xPos] = 'X'
+            cursorLeft()
         elif pressedKey == ord(' '):
-            for k in range(len(grid)):
-                for i in range(len(grid[k])):
-                    grid[k][i] = ' '
+            clearGrid()
     
 def showScreen(stdscr, width, height):
     # Clear the screen
@@ -52,7 +67,8 @@ def showScreen(stdscr, width, height):
         for i in range(len(grid[k])):
             stdscr.addstr(k+1, 3 + i*3, str(grid[k][i]))
             
-    stdscr.addstr(height+1, 0, 'Enter command (up, down, left, right, clear): ')
+    stdscr.addstr(height+1, 0, 'Use arrow keys to move and space bar to clear the board ')
+    stdscr.addstr(height+2, 0, 'Or use the wired buttons to move and clear the board ')
     
     # Show the screen
     stdscr.refresh()
@@ -61,6 +77,10 @@ def showScreen(stdscr, width, height):
 # Get board dimensions
 width = int(input('Enter board width: '))
 height = int(input('Enter board height: '))
+
+# Generate a random starting location
+xPos = random.randint(0, width - 1)
+yPos = random.randint(0, height - 1)
 
 # Create the grid
 grid = [[' ' for i in range(width)] for j in range(height)]
