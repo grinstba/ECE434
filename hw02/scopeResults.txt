@@ -1,0 +1,66 @@
+togglegpio.sh		
+Min Voltage (V)	-0.16	
+Max Voltage (V)	3.28	
+Period	236.0ms	
+How close to 200ms?	36.0ms	
+Why do they differ?		The bash script is modifying the files to change the GPIO pins which takes time to do.
+CPU Usage	19.70%	
+How stable is period?		It seems pretty stable, maybe a 5% variation
+Vi period stability?		The period stability goes way down when vi is open
+Changing bash to sh		The period decreases since sh is a lower level shell
+cleaning up togglegpio.sh		Cleaning up some of the lines significantly decreased the period
+Shortest period	12.59ms	
+
+Argument	Period	CPU Usage (%)
+0.1	236ms	19.7
+0.09	215ms	19.9
+0.05	135.4ms	29.1
+0.02	75ms	49.1
+0.005	44.8ms	81.5
+0.002	38.4ms	91.1
+0.0005	36.2ms	97.4
+
+		
+		
+		
+togglegpio.py		
+Min Voltage (V)	-0.16	
+Max Voltage (V)	3.28	
+Period	201.4ms	Python libraries have some over-head
+How close to 200ms?	1.4ms	
+Why do they differ?		
+CPU Usage	2.70%	
+How stable is period?		The period stability seems less than the stability from the .sh file
+Vi period stability?		The period stability seems pretty much the same
+Shortest period	1.64ms	
+
+Argument	Period	CPU Usage (%)
+0.1	201.4ms	2.7
+0.09	181.5ms	2.7
+0.05	101.2ms	2.7
+0.02	41.36ms	4.2
+0.005	11.28ms	14.8
+0.002	5.32ms	4.5
+0.0005	1.64ms	43.3
+
+		
+		
+		
+togglegpio.c		
+Min Voltage (V)	-0.16	
+Max Voltage (V)	3.28	
+Period	201.0ms	
+How close to 200ms?	1.0ms	
+Why do they differ?		C is a lower level langauge but still has some over-head
+CPU Usage	2.60%	
+How stable is period?		The period is very stable, maybe 5% fluctuation
+Vi period stability?		The period becomes much less stable
+Shortest period	1.6001ms	
+
+0.1	201ms	2.6
+0.09	181ms	2.7
+0.05	100.7ms	2.7
+0.02	40.7ms	2.7
+0.005	10.7ms	3.5
+0.002	4.6001ms	6.6
+0.0005	1.6001ms	13.1
