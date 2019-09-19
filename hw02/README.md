@@ -16,3 +16,11 @@ How to compile:
    > gcc -lsoc -o togglegpio togglegpio.c   
 
 This compiled program toggles gpio_117 on and off. The delay is hard coded in microseconds. The program takes no arguments.  
+
+
+## Prof. Yoder's comments
+
+'scope results look good.
+etch-a-sketch looks good.  
+
+Grade:  10/10
