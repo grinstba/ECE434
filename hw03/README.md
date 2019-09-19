@@ -11,3 +11,6 @@ the cursor around and fill in the board.
 ### etchASketch.py  
 This file runs a program that displays an etch-a-sketch onto an 8x8 LED matrix. Use either the buttons 
 or the encoders to move the cursor around and fill in the board.  
+
+### readTemp.py  
+This file runs a program that continuously shows the temperature output in Celcius from two TMP101 sensors.   
