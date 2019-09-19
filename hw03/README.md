@@ -14,3 +14,6 @@ or the encoders to move the cursor around and fill in the board.
 
 ### readTemp.py  
 This file runs a program that continuously shows the temperature output in Celcius from two TMP101 sensors.   
+
+### tempAlert.py  
+This file runs a program that will trigger an alert signal if the temperature goes above 27C or below 25C  
