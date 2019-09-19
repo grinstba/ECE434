@@ -3,6 +3,9 @@ from Adafruit_BBIO.Encoder import RotaryEncoder, eQEP2b, eQEP1
 import Adafruit_BBIO.GPIO as GPIO
 import random
 import smbus
+import subprocess
+
+subprocess.call(['./setup.sh'])
 
 bus = smbus.SMBus(2)  # Use i2c bus 1
 matrix = 0x70         # Use address 0x70
