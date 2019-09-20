@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 import Adafruit_BBIO.GPIO as GPIO
 import smbus
+import subprocess
+
+subprocess.call(['./setup.sh'])
 
 def alert(channel):
     print('Alert')

@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
-
 import smbus
 import time
+import subprocess
+
+subprocess.call(['./setup.sh'])
 
 bus = smbus.SMBus(2)
 address1 = 0x48
