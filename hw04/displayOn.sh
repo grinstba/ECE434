@@ -26,7 +26,7 @@ sudo bash << EOF
     config-pin P9_17 spi_cs # spi 0_cs0
     
     # LED pin, turn on
-    # ./backlight.py
+    ./backlight.py
     
     sleep 0.1
     
