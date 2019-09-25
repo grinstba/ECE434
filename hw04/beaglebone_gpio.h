@@ -2,7 +2,6 @@
 #ifndef _BEAGLEBONE_GPIO_H_
 #define _BEAGLEBONE_GPIO_H_
 
-//#define GPIO1_START_ADDR 0x4804C000
 #define GPIO0_START_ADDR 0x44e07000
 #define GPIO0_END_ADDR 0x44e09000
 #define GPIO0_SIZE (GPIO0_END_ADDR - GPIO0_START_ADDR)
@@ -22,5 +21,6 @@
 #define USR3 (1<<24)
 #define GPIO_03  (1<<3)
 #define GPIO_07  (1<<7)
+#define GPIO_30  (1<<30)
 #define GPIO_60  (1<<28)
 #endif

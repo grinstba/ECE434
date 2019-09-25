@@ -1,8 +1,6 @@
 // From : http://stackoverflow.com/questions/13124271/driving-beaglebone-gpio-through-dev-mem
-//
-// Read one gpio pin and write it out to another using mmap.
-// Be sure to set -O3 when compiling.
 // Modified by Mark A. Yoder  26-Sept-2013
+// Modified by Brock Grinstead 25-Sept-2019
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/mman.h>
@@ -39,15 +37,15 @@ int main(int argc, char *argv[]) {
     volatile unsigned int *gpio_cleardataout_addr;
     volatile unsigned int *gpio_cleardataout_addr2;
     unsigned int reg;
+    unsigned int reg2;
 
     // Set the signal callback for Ctrl-C
     signal(SIGINT, signal_handler);
 
     int fd = open("/dev/mem", O_RDWR);
-
-    printf("Mapping %X - %X (size: %X)\n", GPIO0_START_ADDR, GPIO0_END_ADDR, 
-                                           GPIO0_SIZE);
-
+    
+    
+    // map address1
     gpio_addr = mmap(0, GPIO0_SIZE, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 
                         GPIO0_START_ADDR);
 
@@ -57,32 +55,43 @@ int main(int argc, char *argv[]) {
     gpio_cleardataout_addr = gpio_addr + GPIO_CLEARDATAOUT;
 
     if(gpio_addr == MAP_FAILED) {
-        printf("Unable to map GPIO\n");
+        printf("Unable to map address1\n");
         exit(1);
     }
-    printf("GPIO mapped to %p\n", gpio_addr);
-    printf("GPIO OE mapped to %p\n", gpio_oe_addr);
-    printf("GPIO SETDATAOUTADDR mapped to %p\n", gpio_setdataout_addr);
-    printf("GPIO CLEARDATAOUT mapped to %p\n", gpio_cleardataout_addr);
     
+    // map address2
     gpio_addr2 = mmap(0, GPIO1_SIZE, PROT_READ | PROT_WRITE, MAP_SHARED, fd, GPIO1_START_ADDR);
     
     gpio_oe_addr2           = gpio_addr2 + GPIO_OE;
     gpio_setdataout_addr2   = gpio_addr2 + GPIO_SETDATAOUT;
     gpio_cleardataout_addr2 = gpio_addr2 + GPIO_CLEARDATAOUT;
     
+    if(gpio_addr2 == MAP_FAILED) {
+        printf("Unable to map address2\n");
+        exit(1);
+    }
+    
     // Set USR3 to be an output pin
     reg = *gpio_oe_addr2;
-    printf("GPIO1 configuration: %X\n", reg);
     reg &= ~USR3;       // Set USR3 bit to 0
     *gpio_oe_addr2 = reg;
-
-    printf("Start copying GPIO_07 to GPIO_03\n");
+    
+    // Set USR1 to be an output pin
+    reg2 = *gpio_oe_addr2;
+    reg2 &= ~USR1;       // Set USR1 bit to 0
+    *gpio_oe_addr2 = reg2;
+    
+    
     while(keepgoing) {
     	if(*gpio_datain & GPIO_07) {
             *gpio_setdataout_addr2= USR3;
-    	} else {
+    	} 
+    	else if (*gpio_datain & GPIO_30){
+    	    *gpio_setdataout_addr2= USR1;
+    	} 
+    	else {
             *gpio_cleardataout_addr2 = USR3;
+            *gpio_cleardataout_addr2 = USR1;
     	}
         usleep(1000);
     }
