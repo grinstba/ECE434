@@ -51,10 +51,14 @@ void signal_handler(int sig)
 
 int main(int argc, char *argv[]) {
     volatile void *gpio_addr;
+    volatile void *gpio_addr2;
     volatile unsigned int *gpio_oe_addr;
+    volatile unsigned int *gpio_oe_addr2;
     volatile unsigned int *gpio_datain;
     volatile unsigned int *gpio_setdataout_addr;
+    volatile unsigned int *gpio_setdataout_addr2;
     volatile unsigned int *gpio_cleardataout_addr;
+    volatile unsigned int *gpio_cleardataout_addr2;
     unsigned int reg;
 
     // Set the signal callback for Ctrl-C
@@ -81,18 +85,31 @@ int main(int argc, char *argv[]) {
     printf("GPIO OE mapped to %p\n", gpio_oe_addr);
     printf("GPIO SETDATAOUTADDR mapped to %p\n", gpio_setdataout_addr);
     printf("GPIO CLEARDATAOUT mapped to %p\n", gpio_cleardataout_addr);
+    
+    gpio_addr2 = mmap(0, GPIO1_SIZE, PROT_READ | PROT_WRITE, MAP_SHARED, fd, GPIO1_START_ADDR);
+    
+    gpio_oe_addr2           = gpio_addr2 + GPIO_OE;
+    gpio_setdataout_addr2   = gpio_addr2 + GPIO_SETDATAOUT;
+    gpio_cleardataout_addr2 = gpio_addr2 + GPIO_CLEARDATAOUT;
+    
+    // Set USR3 to be an output pin
+    reg = *gpio_oe_addr2;
+    printf("GPIO1 configuration: %X\n", reg);
+    reg &= ~USR3;       // Set USR3 bit to 0
+    *gpio_oe_addr2 = reg;
 
     printf("Start copying GPIO_07 to GPIO_03\n");
     while(keepgoing) {
     	if(*gpio_datain & GPIO_07) {
-            *gpio_setdataout_addr= USR3;
+            *gpio_setdataout_addr2= USR3;
     	} else {
-            *gpio_cleardataout_addr = USR3;
+            *gpio_cleardataout_addr2 = USR3;
     	}
-        //usleep(1);
+        usleep(1000);
     }
 
     munmap((void *)gpio_addr, GPIO0_SIZE);
+    munmap((void *)gpio_addr2, GPIO1_SIZE);
     close(fd);
     return 0;
 }
