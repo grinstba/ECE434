@@ -14,3 +14,15 @@ This file displays 'Brock Grinstead' in text on the LCD display
 
 ### displayBorisName.sh  
 This file displays the text 'Brock Grinstead' over the image of Boris the beagle in a tux  
+
+### Makefile  
+This makefile will compile toggleLED.c and buttonLED.c with the appropriate flags  
+
+### beaglebone_gpio.h  
+This header file defines many GPIO addresses needed to use mmap  
+
+### toggleLED.c  
+This file toggles USR3 using mmap  
+
+### buttonLED.c  
+This file controls USR1 and USR3 using mmap and two push buttons  
