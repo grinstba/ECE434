@@ -38,6 +38,9 @@ int main(int argc, char *argv[]) {
     volatile unsigned int *gpio_cleardataout_addr2;
     unsigned int reg;
     unsigned int reg2;
+    
+    // Config P9_11 to be GPIO
+    system("config-pin P9_11 gpio");
 
     // Set the signal callback for Ctrl-C
     signal(SIGINT, signal_handler);

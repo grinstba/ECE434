@@ -23,6 +23,10 @@ This header file defines many GPIO addresses needed to use mmap
 
 ### toggleLED.c  
 This file toggles USR3 using mmap  
+  
+##### Questions  
+- There seems to be only 0.6ms delay in toggling the LED, which is much less overhead than the methods in the last homework assignment  
+- I could get down to a 20 microsecond period without a usleep call, however, the program would not terminate itself anymore.  
 
 ### buttonLED.c  
 This file controls USR1 and USR3 using mmap and two push buttons  
