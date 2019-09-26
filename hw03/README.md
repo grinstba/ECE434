@@ -17,3 +17,10 @@ This file runs a program that continuously shows the temperature output in Celci
 
 ### tempAlert.py  
 This file runs a program that will trigger an alert signal if the temperature goes above 27C or below 25C  
+
+
+## Prof. Yoder's comments
+
+Looks good.  
+
+Grade:  10/10
