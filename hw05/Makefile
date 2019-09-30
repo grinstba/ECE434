@@ -1,10 +1,21 @@
+-include ./path.mak
+
+# User Defined Variables
+CC := $(LINUXarm_GCC)
+CFLAGS := -g
+LINKER_FLAGS := -lstdc++
+
 all: app.arm
 
 app.arm: app.o
-	gcc -g app.o -o app.arm
+	$(CC) $(CFLAGS) $(LINKER_FLAGS) $^ -o $@
+	@echo; echo $@ successfully create; echo
 
 app.o: app.c
-	gcc -g -c app.c -o app.o
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	rm app.o app.arm
+	
+test:
+	@echo CC = $(CC)
