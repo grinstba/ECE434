@@ -34,5 +34,11 @@ some user input and the module will function depending on that input.
 > sudo insmod ebbchar.ko  
 > dmesg -H | tail -4  
 > ./test  
-> dmesg -H | tail -8
+> dmesg -H | tail -8  
 
+### KernelGPIO  
+This folder contains all the files necessary for part three of the kernel modules homework. 
+Run the following commands to ensure that the module is working.  
+> make  
+> sudo insmof gpio_test.ko  
+> tail -f /var/log/kern.log  
