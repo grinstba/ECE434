@@ -27,7 +27,7 @@ parameters to the kernel module and its print statement will change.
 > dmesg -H | tail -2  
 
 ### aCharacterDevice  
-This foler contains all of the files necessary for part two of the kernel modules homework.  
+This folder contains all of the files necessary for part two of the kernel modules homework.  
 Run the following commands to ensure that the module is working. Note that the test will ask for 
 some user input and the module will function depending on that input.  
 > make  
@@ -42,3 +42,9 @@ Run the following commands to ensure that the module is working.
 > make  
 > sudo insmof gpio_test.ko  
 > tail -f /var/log/kern.log  
+
+## Prof. Yoder's comments
+
+Looks good. Very clear
+
+Grade:  10/10
