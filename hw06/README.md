@@ -4,7 +4,7 @@
 1. Where does Julia Cartwrite work?  
 <em> National Instruments </em>  
 2. What is PREEMPT_RT?  
-<em> The RT patch makes the linux kernel into a real-time system. This means that it does what yiu want it to do when you
+<em> The RT patch makes the linux kernel into a real-time system. This means that it does what you want it to do when you
 want it to do it. </em>  
 3. What is mixed criticality?  
 <em> When there are two different degrees of time-sensitivity present </em>  
@@ -34,3 +34,9 @@ were under a load are named busy.png and busy2.png.
 I didn't seem to have the same results as exercise 36, however, they RT kernel seemed to bound the latency to around 60 us. 
 I am basing this on the sharp inclines and declines in the busy graphs.  
 For the load, I was using the Makefile in the directory at ~/exercises/linux/modules so the load involved compiling C code.
+
+## Prof. Yoder's comments
+
+Looks good. Nice plots
+
+Grade:  10/10
