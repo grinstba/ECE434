@@ -8,3 +8,8 @@ Run the following commands to get the file working:
 > sudo npm install -g -unsafe-perm blynk-library  
 > sudo mv blynk-library/ /usr/local/lib/node_modules  
 > node ./leds.js  
+
+## Prof. Yoder's comments
+Looks good.  
+
+Grade:  10/10
