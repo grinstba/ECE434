@@ -8,7 +8,8 @@ subprocess.call(['./setup.sh'])
 
 bus = smbus.SMBus(2)
 address1 = 0x48
-address2 = 0x49
+
+bus.write_byte_data(address1, 1, 0x60)
 
 oldTemp1 = None
 
