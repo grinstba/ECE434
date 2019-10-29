@@ -8,3 +8,13 @@ Part | Summary | Image|
 5.3 PWN Generator | The pwm waveform at 50 MHz is very stable. There is a standard devialtion of a few kHz, which is quite small. There is also no jitter present on the scope capture. | ![alt text](https://github.com/grinstba/ECE434/blob/master/hw08/tek00003.png)|
 5.4 Controlling the PWN Frequency | P9_28, P9_29, P9_30, and P9_31 are being driven. The highest frequency we can get is 12.5 MHz. There is also still no jitter present. I couldn't get the pwm-test.c file to run since it couldn't find the <fcntl.h> header file| ![alt text](https://github.com/grinstba/ECE434/blob/master/hw08/tek00004.png)|
 5.9 Reading an Input at Regular Intervals | There was no visible delay on the scope. I put a cursor over the rising and falling edges of the button that was used as input and the output pin responded on the same cursor. | ![alt text](https://github.com/grinstba/ECE434/blob/master/hw08/tek00005.png)|
+
+
+## Prof. Yoder's comments
+
+Strange your Beagle thinks it's a Green.
+5.4 That's odd that pwm-test.c wouldn't compile. It just compiled for me.
+What version of the kernel are you running?
+5.9 Try zooming in more.  It's only 30ns or so.
+
+Grade:  9/10
