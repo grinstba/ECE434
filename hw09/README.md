@@ -8,3 +8,9 @@ This file posts given parameters to google sheets.
 
 ### postToThingSpeak.js  
 This file reads and logs TMP101 sensor data to Thing Speak every 10 seconds.  
+
+## Prof. Yoder's comments
+
+Could you give me links to your logs?
+
+Grade:  9/10
